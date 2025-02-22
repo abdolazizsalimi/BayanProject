@@ -1,3 +1,6 @@
+import 'package:bayan/more_categories_screen.dart';
+import 'package:bayan/pages/invoice_all.dart';
+import 'package:bayan/pages/notification_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeDashboardScreen extends StatefulWidget {
@@ -56,6 +59,12 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
           IconButton(
             onPressed: () {
               // Notification action
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NotificationScreen(),
+                ),
+              );
             },
             icon: Icon(Icons.notifications_none, color: Colors.grey.shade800),
           ),
@@ -98,6 +107,12 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                   InkWell(
                     onTap: () {
                       // Show more categories action
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MoreCategoriesScreen(),
+                        ),
+                      );
                     },
                     child: const Text(
                       'more Categories',
@@ -129,7 +144,12 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // See all invoices
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AllInvoicesScreen(),
+                        ),
+                      );
                     },
                     child: const Text(
                       'See All',

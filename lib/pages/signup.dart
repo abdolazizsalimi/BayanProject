@@ -8,16 +8,14 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  // Reuse the same color from your previous screen to stay consistent
   final Color mainTeal = const Color(0xFF136760);
-
   bool agreeToTerms = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Body is mostly white, with a teal container at the top
-      body: SafeArea(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 30), // Shifts content down by 10px
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -34,7 +32,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // spaceBetween places text on the left, row of [logo, close] on the right
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // -- Multiline text on the left --
                     Expanded(
                       child: Text(
                         "Let's\nCreate\nYour\nAccount!",
@@ -48,16 +50,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                       ),
                     ),
-                    // "Close" or "Back" button
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context); // Go back or close
-                      },
-                      icon: const Icon(
-                        Icons.close,
-                        color: Colors.white,
-                        size: 30,
-                      ),
+                    // -- Logo & Close button on the right --
+                    Row(
+                      children: [
+                        // Logo on the right
+                        Image.asset(
+                          'lib/assets/images/logo2.png', // Adjust path as needed
+                          width: 90,
+                          height: 90,
+                          fit: BoxFit.contain,
+                        ),
+                        const SizedBox(width: 8),
+                        // Close button
+                        IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Icons.close,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -161,16 +176,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Have an account? ",
-                            style: TextStyle(color: Colors.grey)),
+                        const Text(
+                          "Have an account? ",
+                          style: TextStyle(color: Colors.grey),
+                        ),
                         InkWell(
                           onTap: () {
                             Navigator.pop(context);
-                            // Or navigate to the login screen if you want:
-                            // Navigator.pushReplacement(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) => LoginScreen()),
-                            // );
+                            // Or navigate to the login screen if desired
                           },
                           child: Text(
                             "Sign In..",
